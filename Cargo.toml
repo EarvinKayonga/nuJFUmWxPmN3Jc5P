@@ -1,0 +1,27 @@
+[package]
+name = "rist-grpc"
+version = "0.1.0"
+authors = ["psdf52g3d3s9e4"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]] # Bin to run the HelloWorld gRPC server
+name = "helloworld-server"
+path = "src/server.rs"
+
+
+[dependencies]
+tonic = "0.1.0-alpha.5"
+bytes = "0.4"
+prost = "0.5"
+prost-derive = "0.5"
+tokio = "=0.2.0-alpha.6"
+
+[build-dependencies]
+tonic-build = "0.1.0-alpha.5"
+
+
+
+#   git clone git clone https://github.com/googleapis/googleapis
+#   protoc -I. --proto_path=googleapis  --include_imports --include_source_info  --descriptor_set_out=target/greeter.pb proto/helloworld.proto

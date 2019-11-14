@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  http-transcoder:
+    image: envoyproxy/envoy
+    volumes:
+      - ./envoy.config.yml:/etc/envoy/envoy.yaml:ro
+      - ./target/greeter.pb:/data/greeterService.pb
+    ports:
+      - 51051:51051
+      - 9901:9901
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: /app/server
+    environment:
+      - RUST_LOG=rist-grpc
+      - RUST_BACKTRACE=all
+    ports:
+      - 50051:50051
