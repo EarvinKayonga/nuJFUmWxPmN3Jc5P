@@ -1,0 +1,10 @@
+---
+apiVersion: ambassador/v1
+kind:  AuthService
+name:  authentication
+auth_service: "auth:3000"
+path_prefix: "/extauth"
+allowed_request_headers:
+- "x-qotm-session"
+allowed_authorization_headers:
+- "x-qotm-session"
